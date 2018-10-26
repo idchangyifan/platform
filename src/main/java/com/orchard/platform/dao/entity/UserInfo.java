@@ -1,5 +1,10 @@
 package com.orchard.platform.dao.entity;
 
+
+import org.apache.ibatis.annotations.Mapper;
+
+import java.util.Date;
+
 public class UserInfo {
     private String id;
 
@@ -12,6 +17,14 @@ public class UserInfo {
     private Integer userType;
 
     private String userPhone;
+
+    private Date createDate;
+
+    private Date updateDate;
+
+    private String createBy;
+
+    private String updateBy;
 
     public String getId() {
         return id;
@@ -59,5 +72,37 @@ public class UserInfo {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone == null ? null : userPhone.trim();
+    }
+
+    public Date getCreateDate() {
+        return createDate;
+    }
+
+    public void setCreateDate(Date createDate) {
+        this.createDate = createDate;
+    }
+
+    public Date getUpdateDate() {
+        return updateDate;
+    }
+
+    public void setUpdateDate(Date updateDate) {
+        this.updateDate = updateDate;
+    }
+
+    public String getCreateBy() {
+        return createBy;
+    }
+
+    public void setCreateBy(String createBy) {
+        this.createBy = createBy == null ? null : createBy.trim();
+    }
+
+    public String getUpdateBy() {
+        return updateBy;
+    }
+
+    public void setUpdateBy(String updateBy) {
+        this.updateBy = updateBy == null ? null : updateBy.trim();
     }
 }

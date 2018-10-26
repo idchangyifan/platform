@@ -3,8 +3,10 @@ package com.orchard.platform.dao.mapper;
 import com.orchard.platform.dao.entity.UserInfo;
 import com.orchard.platform.dao.entity.UserInfoExample;
 import java.util.List;
-import org.apache.ibatis.annotations.Param;
 
+import org.apache.ibatis.annotations.Mapper;
+import org.apache.ibatis.annotations.Param;
+@Mapper
 public interface UserInfoMapper {
     long countByExample(UserInfoExample example);
 
