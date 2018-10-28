@@ -27,17 +27,18 @@ public class CommonApi {
     @Autowired
     CommonService commonService;
 
-    @ApiOperation("用户注册")
+    //TODO:数据校验这一块重写 合理利用@valid
+    @ApiOperation("注册")
     @PostMapping("/register")
     public Result<?> register(@RequestBody UserInfoDto userInfoDto) {
         return Result.success(commonService.register(userInfoDto));
     }
 
-    @ApiOperation("用户注册")
-    @GetMapping("/login")
-    public Result<?> login(String s) {
-        List<String> list = new ArrayList<>();
-        list.add("abc");
+    @ApiOperation("登录")
+    @PostMapping("/login")
+    public Result<?> login(@RequestBody UserInfoDto userInfoDto) {
+        String userId = userInfoDto.getUserId();
+        String password = userInfoDto.getUserPassword();
         return Result.success();
     }
 }
