@@ -41,6 +41,10 @@ public class CommonServiceImpl implements CommonService {
             userInfo.setCreateDate(new Date());
             userInfo.setUpdateDate(new Date());
             userInfo.setUpdateBy(userName);
+            userInfo.setUserName(userName);
+            userInfo.setUserId(userId);
+            userInfo.setUserPassword(password);
+            userInfo.setUserPhone(userPhone);
             userInfoMapper.insert(userInfo);
         }
         return false;

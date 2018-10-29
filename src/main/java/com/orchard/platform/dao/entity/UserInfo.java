@@ -1,8 +1,5 @@
 package com.orchard.platform.dao.entity;
 
-
-import org.apache.ibatis.annotations.Mapper;
-
 import java.util.Date;
 
 public class UserInfo {

@@ -13,12 +13,6 @@ import com.alibaba.druid.spring.boot.autoconfigure.DruidDataSourceBuilder;
 
 import javax.sql.DataSource;
 
-*/
-/**
- *@Author orchard.chang
- *@Date 2018/10/270:01
- *@Version 1.0
- **//*
 
 @MapperScan("com.orchard.platform.dao.mapper")
 @Configuration
