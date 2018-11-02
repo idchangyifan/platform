@@ -3,9 +3,9 @@ package com.orchard.platform.service.common.impl;
  * @author Orchard.Chang
  */
 
-import com.fasterxml.uuid.Generators;
-import com.orchard.platform.dao.entity.UserInfo;
-import com.orchard.platform.dao.mapper.UserInfoMapper;
+import com.orchard.platform.dao.entity.auth.UserInfo;
+import com.orchard.platform.dao.entity.auth.UserInfoExample;
+import com.orchard.platform.dao.mapper.auth.UserInfoMapper;
 import com.orchard.platform.dto.UserInfoDto;
 import com.orchard.platform.service.common.CommonService;
 import com.orchard.platform.service.utils.MyUtilService;
@@ -14,6 +14,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import org.springframework.util.StringUtils;
 import java.util.Date;
+import java.util.List;
+import java.util.UUID;
 
 /**
  *@Author orchard.chang
@@ -35,7 +37,7 @@ public class CommonServiceImpl implements CommonService {
         if (verifyInput(userName) && verifyInput(userId) && !StringUtils.isEmpty(password) && MyUtilService.isNumeric(userPhone)) {
             UserInfo userInfo = new UserInfo();
             BeanUtils.copyProperties(userInfoDto, userInfo);
-            userInfo.setId(Generators.timeBasedGenerator().generate().toString());
+            userInfo.setId(UUID.randomUUID().toString().replace("-", "").toUpperCase());
             userInfo.setUserType(1);
             userInfo.setCreateBy(userName);
             userInfo.setCreateDate(new Date());
@@ -58,5 +60,12 @@ public class CommonServiceImpl implements CommonService {
     @Override
     public boolean verifyInput(String string) {
         return !StringUtils.isEmpty(string) && !StringUtils.containsWhitespace(string) && !MyUtilService.isSpecialChar(string);
+    }
+
+    @Override
+    public UserInfo findByUserId(String userId) {
+        UserInfoExample example = new UserInfoExample();
+        example.createCriteria().andUserIdEqualTo(userId);
+        return userInfoMapper.selectByExample(example).get(0);
     }
 }

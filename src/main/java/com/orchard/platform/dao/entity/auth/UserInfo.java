@@ -1,35 +1,23 @@
-package com.orchard.platform.dao.entity;
+package com.orchard.platform.dao.entity.auth;
 
-import java.util.Date;
+import com.orchard.Entity;
 
-public class UserInfo {
-    private String id;
+import java.util.List;
 
+public class UserInfo extends Entity {
     private String userName;
 
     private String userId;
 
     private String userPassword;
 
+    private String salt;
+
     private Integer userType;
 
     private String userPhone;
-
-    private Date createDate;
-
-    private Date updateDate;
-
-    private String createBy;
-
-    private String updateBy;
-
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id == null ? null : id.trim();
-    }
+    //todo:这里应该有一个用于保存role的list，要重写userinfo的增删改查，可以参照小飞
+    //private List<Roles> rolesList;
 
     public String getUserName() {
         return userName;
@@ -55,6 +43,14 @@ public class UserInfo {
         this.userPassword = userPassword == null ? null : userPassword.trim();
     }
 
+    public String getSalt() {
+        return salt;
+    }
+
+    public void setSalt(String salt) {
+        this.salt = salt == null ? null : salt.trim();
+    }
+
     public Integer getUserType() {
         return userType;
     }
@@ -71,35 +67,11 @@ public class UserInfo {
         this.userPhone = userPhone == null ? null : userPhone.trim();
     }
 
-    public Date getCreateDate() {
-        return createDate;
+/*    public List<Roles> getRolesList() {
+        return rolesList;
     }
 
-    public void setCreateDate(Date createDate) {
-        this.createDate = createDate;
-    }
-
-    public Date getUpdateDate() {
-        return updateDate;
-    }
-
-    public void setUpdateDate(Date updateDate) {
-        this.updateDate = updateDate;
-    }
-
-    public String getCreateBy() {
-        return createBy;
-    }
-
-    public void setCreateBy(String createBy) {
-        this.createBy = createBy == null ? null : createBy.trim();
-    }
-
-    public String getUpdateBy() {
-        return updateBy;
-    }
-
-    public void setUpdateBy(String updateBy) {
-        this.updateBy = updateBy == null ? null : updateBy.trim();
-    }
+    public void setRolesList(List<Roles> rolesList) {
+        this.rolesList = rolesList;
+    }*/
 }

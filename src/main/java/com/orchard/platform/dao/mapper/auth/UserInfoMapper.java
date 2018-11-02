@@ -1,7 +1,7 @@
-package com.orchard.platform.dao.mapper;
+package com.orchard.platform.dao.mapper.auth;
 
-import com.orchard.platform.dao.entity.UserInfo;
-import com.orchard.platform.dao.entity.UserInfoExample;
+import com.orchard.platform.dao.entity.auth.UserInfo;
+import com.orchard.platform.dao.entity.auth.UserInfoExample;
 import java.util.List;
 
 import org.apache.ibatis.annotations.Mapper;

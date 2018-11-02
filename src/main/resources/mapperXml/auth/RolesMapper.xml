@@ -1,15 +1,13 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
-<mapper namespace="com.orchard.platform.dao.mapper.UserInfoMapper">
-  <resultMap id="BaseResultMap" type="com.orchard.platform.dao.entity.UserInfo">
+<mapper namespace="com.orchard.platform.dao.mapper.auth.RolesMapper">
+  <resultMap id="BaseResultMap" type="com.orchard.platform.dao.entity.auth.Roles">
     <id column="id" jdbcType="VARCHAR" property="id" />
-    <result column="user_name" jdbcType="VARCHAR" property="userName" />
-    <result column="user_id" jdbcType="VARCHAR" property="userId" />
-    <result column="user_password" jdbcType="VARCHAR" property="userPassword" />
-    <result column="user_Type" jdbcType="INTEGER" property="userType" />
-    <result column="user_phone" jdbcType="VARCHAR" property="userPhone" />
-    <result column="create_date" jdbcType="DATE" property="createDate" />
-    <result column="update_date" jdbcType="DATE" property="updateDate" />
+    <result column="role_name" jdbcType="VARCHAR" property="roleName" />
+    <result column="role_description" jdbcType="VARCHAR" property="roleDescription" />
+    <result column="available" jdbcType="VARCHAR" property="available" />
+    <result column="create_date" jdbcType="TIMESTAMP" property="createDate" />
+    <result column="update_date" jdbcType="TIMESTAMP" property="updateDate" />
     <result column="create_by" jdbcType="VARCHAR" property="createBy" />
     <result column="update_by" jdbcType="VARCHAR" property="updateBy" />
   </resultMap>
@@ -72,17 +70,17 @@
     </where>
   </sql>
   <sql id="Base_Column_List">
-    id, user_name, user_id, user_password, user_Type, user_phone, create_date, update_date, 
-    create_by, update_by
+    id, role_name, role_description, available, create_date, update_date, create_by, 
+    update_by
   </sql>
-  <select id="selectByExample" parameterType="com.orchard.platform.dao.entity.UserInfoExample" resultMap="BaseResultMap">
+  <select id="selectByExample" parameterType="com.orchard.platform.dao.entity.auth.RolesExample" resultMap="BaseResultMap">
     select
     <if test="distinct">
       distinct
     </if>
     'true' as QUERYID,
     <include refid="Base_Column_List" />
-    from user_info
+    from roles
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
@@ -93,49 +91,41 @@
   <select id="selectByPrimaryKey" parameterType="java.lang.String" resultMap="BaseResultMap">
     select 
     <include refid="Base_Column_List" />
-    from user_info
+    from roles
     where id = #{id,jdbcType=VARCHAR}
   </select>
   <delete id="deleteByPrimaryKey" parameterType="java.lang.String">
-    delete from user_info
+    delete from roles
     where id = #{id,jdbcType=VARCHAR}
   </delete>
-  <delete id="deleteByExample" parameterType="com.orchard.platform.dao.entity.UserInfoExample">
-    delete from user_info
+  <delete id="deleteByExample" parameterType="com.orchard.platform.dao.entity.auth.RolesExample">
+    delete from roles
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </delete>
-  <insert id="insert" parameterType="com.orchard.platform.dao.entity.UserInfo">
-    insert into user_info (id, user_name, user_id, 
-      user_password, user_Type, user_phone, 
-      create_date, update_date, create_by, 
-      update_by)
-    values (#{id,jdbcType=VARCHAR}, #{userName,jdbcType=VARCHAR}, #{userId,jdbcType=VARCHAR}, 
-      #{userPassword,jdbcType=VARCHAR}, #{userType,jdbcType=INTEGER}, #{userPhone,jdbcType=VARCHAR}, 
-      #{createDate,jdbcType=DATE}, #{updateDate,jdbcType=DATE}, #{createBy,jdbcType=VARCHAR}, 
-      #{updateBy,jdbcType=VARCHAR})
+  <insert id="insert" parameterType="com.orchard.platform.dao.entity.auth.Roles">
+    insert into roles (id, role_name, role_description, 
+      available, create_date, update_date, 
+      create_by, update_by)
+    values (#{id,jdbcType=VARCHAR}, #{roleName,jdbcType=VARCHAR}, #{roleDescription,jdbcType=VARCHAR}, 
+      #{available,jdbcType=VARCHAR}, #{createDate,jdbcType=TIMESTAMP}, #{updateDate,jdbcType=TIMESTAMP}, 
+      #{createBy,jdbcType=VARCHAR}, #{updateBy,jdbcType=VARCHAR})
   </insert>
-  <insert id="insertSelective" parameterType="com.orchard.platform.dao.entity.UserInfo">
-    insert into user_info
+  <insert id="insertSelective" parameterType="com.orchard.platform.dao.entity.auth.Roles">
+    insert into roles
     <trim prefix="(" suffix=")" suffixOverrides=",">
       <if test="id != null">
         id,
       </if>
-      <if test="userName != null">
-        user_name,
+      <if test="roleName != null">
+        role_name,
       </if>
-      <if test="userId != null">
-        user_id,
+      <if test="roleDescription != null">
+        role_description,
       </if>
-      <if test="userPassword != null">
-        user_password,
-      </if>
-      <if test="userType != null">
-        user_Type,
-      </if>
-      <if test="userPhone != null">
-        user_phone,
+      <if test="available != null">
+        available,
       </if>
       <if test="createDate != null">
         create_date,
@@ -154,26 +144,20 @@
       <if test="id != null">
         #{id,jdbcType=VARCHAR},
       </if>
-      <if test="userName != null">
-        #{userName,jdbcType=VARCHAR},
+      <if test="roleName != null">
+        #{roleName,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        #{userId,jdbcType=VARCHAR},
+      <if test="roleDescription != null">
+        #{roleDescription,jdbcType=VARCHAR},
       </if>
-      <if test="userPassword != null">
-        #{userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="userType != null">
-        #{userType,jdbcType=INTEGER},
-      </if>
-      <if test="userPhone != null">
-        #{userPhone,jdbcType=VARCHAR},
+      <if test="available != null">
+        #{available,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
-        #{createDate,jdbcType=DATE},
+        #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="updateDate != null">
-        #{updateDate,jdbcType=DATE},
+        #{updateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="createBy != null">
         #{createBy,jdbcType=VARCHAR},
@@ -183,38 +167,32 @@
       </if>
     </trim>
   </insert>
-  <select id="countByExample" parameterType="com.orchard.platform.dao.entity.UserInfoExample" resultType="java.lang.Long">
-    select count(*) from user_info
+  <select id="countByExample" parameterType="com.orchard.platform.dao.entity.auth.RolesExample" resultType="java.lang.Long">
+    select count(*) from roles
     <if test="_parameter != null">
       <include refid="Example_Where_Clause" />
     </if>
   </select>
   <update id="updateByExampleSelective" parameterType="map">
-    update user_info
+    update roles
     <set>
       <if test="record.id != null">
         id = #{record.id,jdbcType=VARCHAR},
       </if>
-      <if test="record.userName != null">
-        user_name = #{record.userName,jdbcType=VARCHAR},
+      <if test="record.roleName != null">
+        role_name = #{record.roleName,jdbcType=VARCHAR},
       </if>
-      <if test="record.userId != null">
-        user_id = #{record.userId,jdbcType=VARCHAR},
+      <if test="record.roleDescription != null">
+        role_description = #{record.roleDescription,jdbcType=VARCHAR},
       </if>
-      <if test="record.userPassword != null">
-        user_password = #{record.userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="record.userType != null">
-        user_Type = #{record.userType,jdbcType=INTEGER},
-      </if>
-      <if test="record.userPhone != null">
-        user_phone = #{record.userPhone,jdbcType=VARCHAR},
+      <if test="record.available != null">
+        available = #{record.available,jdbcType=VARCHAR},
       </if>
       <if test="record.createDate != null">
-        create_date = #{record.createDate,jdbcType=DATE},
+        create_date = #{record.createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.updateDate != null">
-        update_date = #{record.updateDate,jdbcType=DATE},
+        update_date = #{record.updateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="record.createBy != null">
         create_by = #{record.createBy,jdbcType=VARCHAR},
@@ -228,44 +206,36 @@
     </if>
   </update>
   <update id="updateByExample" parameterType="map">
-    update user_info
+    update roles
     set id = #{record.id,jdbcType=VARCHAR},
-      user_name = #{record.userName,jdbcType=VARCHAR},
-      user_id = #{record.userId,jdbcType=VARCHAR},
-      user_password = #{record.userPassword,jdbcType=VARCHAR},
-      user_Type = #{record.userType,jdbcType=INTEGER},
-      user_phone = #{record.userPhone,jdbcType=VARCHAR},
-      create_date = #{record.createDate,jdbcType=DATE},
-      update_date = #{record.updateDate,jdbcType=DATE},
+      role_name = #{record.roleName,jdbcType=VARCHAR},
+      role_description = #{record.roleDescription,jdbcType=VARCHAR},
+      available = #{record.available,jdbcType=VARCHAR},
+      create_date = #{record.createDate,jdbcType=TIMESTAMP},
+      update_date = #{record.updateDate,jdbcType=TIMESTAMP},
       create_by = #{record.createBy,jdbcType=VARCHAR},
       update_by = #{record.updateBy,jdbcType=VARCHAR}
     <if test="_parameter != null">
       <include refid="Update_By_Example_Where_Clause" />
     </if>
   </update>
-  <update id="updateByPrimaryKeySelective" parameterType="com.orchard.platform.dao.entity.UserInfo">
-    update user_info
+  <update id="updateByPrimaryKeySelective" parameterType="com.orchard.platform.dao.entity.auth.Roles">
+    update roles
     <set>
-      <if test="userName != null">
-        user_name = #{userName,jdbcType=VARCHAR},
+      <if test="roleName != null">
+        role_name = #{roleName,jdbcType=VARCHAR},
       </if>
-      <if test="userId != null">
-        user_id = #{userId,jdbcType=VARCHAR},
+      <if test="roleDescription != null">
+        role_description = #{roleDescription,jdbcType=VARCHAR},
       </if>
-      <if test="userPassword != null">
-        user_password = #{userPassword,jdbcType=VARCHAR},
-      </if>
-      <if test="userType != null">
-        user_Type = #{userType,jdbcType=INTEGER},
-      </if>
-      <if test="userPhone != null">
-        user_phone = #{userPhone,jdbcType=VARCHAR},
+      <if test="available != null">
+        available = #{available,jdbcType=VARCHAR},
       </if>
       <if test="createDate != null">
-        create_date = #{createDate,jdbcType=DATE},
+        create_date = #{createDate,jdbcType=TIMESTAMP},
       </if>
       <if test="updateDate != null">
-        update_date = #{updateDate,jdbcType=DATE},
+        update_date = #{updateDate,jdbcType=TIMESTAMP},
       </if>
       <if test="createBy != null">
         create_by = #{createBy,jdbcType=VARCHAR},
@@ -276,15 +246,13 @@
     </set>
     where id = #{id,jdbcType=VARCHAR}
   </update>
-  <update id="updateByPrimaryKey" parameterType="com.orchard.platform.dao.entity.UserInfo">
-    update user_info
-    set user_name = #{userName,jdbcType=VARCHAR},
-      user_id = #{userId,jdbcType=VARCHAR},
-      user_password = #{userPassword,jdbcType=VARCHAR},
-      user_Type = #{userType,jdbcType=INTEGER},
-      user_phone = #{userPhone,jdbcType=VARCHAR},
-      create_date = #{createDate,jdbcType=DATE},
-      update_date = #{updateDate,jdbcType=DATE},
+  <update id="updateByPrimaryKey" parameterType="com.orchard.platform.dao.entity.auth.Roles">
+    update roles
+    set role_name = #{roleName,jdbcType=VARCHAR},
+      role_description = #{roleDescription,jdbcType=VARCHAR},
+      available = #{available,jdbcType=VARCHAR},
+      create_date = #{createDate,jdbcType=TIMESTAMP},
+      update_date = #{updateDate,jdbcType=TIMESTAMP},
       create_by = #{createBy,jdbcType=VARCHAR},
       update_by = #{updateBy,jdbcType=VARCHAR}
     where id = #{id,jdbcType=VARCHAR}

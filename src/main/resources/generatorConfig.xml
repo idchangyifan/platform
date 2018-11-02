@@ -25,6 +25,7 @@
         <javaModelGenerator targetPackage="com.orchard.platform.dao.entity" targetProject="src/main/java">
             <property name="enableSubPackages" value="true"/>
             <property name="trimStrings" value="true"/>
+            <property name="rootClass" value="com.orchard.Entity"/>
         </javaModelGenerator>
 
         <!-- 生成的xml文件包名和位置 -->
@@ -39,8 +40,40 @@
         </javaClientGenerator>
 
 
-        <table schema="" tableName="user_info" domainObjectName="UserInfo"
-               modelType="flat" mapperName="UserInfoMapper" enableCountByExample="true"
+        <table schema="" tableName="user_info" domainObjectName="auth.UserInfo"
+               modelType="flat" mapperName="auth.UserInfoMapper" enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table schema="" tableName="permission" domainObjectName="auth.Permission"
+               modelType="flat" mapperName="auth.PermissionMapper" enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table schema="" tableName="roles" domainObjectName="auth.Roles"
+               modelType="flat" mapperName="auth.RolesMapper" enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table schema="" tableName="role_permission" domainObjectName="auth.RolePermission"
+               modelType="flat" mapperName="auth.RolePermissionMapper" enableCountByExample="true"
+               enableUpdateByExample="true"
+               enableDeleteByExample="true"
+               enableSelectByExample="true"
+               selectByExampleQueryId="true">
+        </table>
+
+        <table schema="" tableName="user_info_role" domainObjectName="auth.UserInfoRole"
+               modelType="flat" mapperName="auth.UserInfoRoleMapper" enableCountByExample="true"
                enableUpdateByExample="true"
                enableDeleteByExample="true"
                enableSelectByExample="true"
