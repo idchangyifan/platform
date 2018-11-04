@@ -46,6 +46,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         return authenticationInfo;
     }
 
+    //todo:权限控制，要给UserInfo添加roleList字段
     @Override
     protected AuthorizationInfo doGetAuthorizationInfo(PrincipalCollection principals) {
         return null;
