@@ -1,9 +1,8 @@
-package com.orchard.platform.dao.entity.realms;
+package com.orchard.platform.config;
 
 
 import com.orchard.platform.dao.entity.auth.UserInfo;
-import com.orchard.platform.dao.mapper.auth.UserInfoMapper;
-import com.orchard.platform.service.common.CommonService;
+import com.orchard.platform.service.account.AccountService;
 import org.apache.shiro.authc.AuthenticationException;
 import org.apache.shiro.authc.AuthenticationInfo;
 import org.apache.shiro.authc.AuthenticationToken;
@@ -22,7 +21,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 
 public class MyShiroRealm extends AuthorizingRealm {
     @Autowired
-    CommonService commonService;
+    AccountService accountService;
 
     @Override
     protected AuthenticationInfo doGetAuthenticationInfo(AuthenticationToken token) throws AuthenticationException {
@@ -32,7 +31,7 @@ public class MyShiroRealm extends AuthorizingRealm {
         System.out.println(token.getCredentials());
         //通过username从数据库中查找 User对象，如果找到，没找到.
         //实际项目中，这里可以根据实际情况做缓存，如果不做，Shiro自己也是有时间间隔机制，2分钟内不会重复执行该方法
-        UserInfo userInfo = commonService.findByUserId(userId);
+        UserInfo userInfo = accountService.findByUserId(userId);
         System.out.println("----->>userInfo=" + userInfo);
         if (userInfo == null) {
             return null;

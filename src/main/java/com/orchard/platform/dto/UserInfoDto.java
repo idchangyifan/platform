@@ -12,7 +12,11 @@ public class UserInfoDto {
 
     private String userPassword;
 
+    private String userPassword2;
+
     private String userPhone;
+
+    private boolean rememberMe;
 
     public String getUserName() {
         return userName;
@@ -44,5 +48,21 @@ public class UserInfoDto {
 
     public void setUserPhone(String userPhone) {
         this.userPhone = userPhone;
+    }
+
+    public boolean isRememberMe() {
+        return rememberMe;
+    }
+
+    public void setRememberMe(boolean rememberMe) {
+        this.rememberMe = rememberMe;
+    }
+
+    public String getUserPassword2() {
+        return userPassword2;
+    }
+
+    public void setUserPassword2(String userPassword2) {
+        this.userPassword2 = userPassword2;
     }
 }

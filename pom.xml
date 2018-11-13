@@ -76,10 +76,14 @@
         </dependency>
         <dependency>
             <groupId>org.apache.shiro</groupId>
-            <artifactId>shiro-spring-boot-web-starter</artifactId>
-            <version>1.4.0-RC2</version>
+            <artifactId>shiro-spring</artifactId>
+            <version>1.4.0</version>
         </dependency>
-
+        <dependency>
+            <groupId>org.apache.commons</groupId>
+            <artifactId>commons-lang3</artifactId>
+            <version>3.1</version>
+        </dependency>
 
 
 
@@ -141,8 +145,8 @@
                         <artifactId>orchard</artifactId>
                         <version>v0.1</version>
                         <scope>system</scope>
-                        <systemPath>F:/code/platform/src/main/resources/lib/orchard.jar</systemPath>
-                        <!--<systemPath>D:/code/platform/src/main/resources/lib/orchard.jar</systemPath>-->
+                        <!--<systemPath>F:/code/platform/src/main/resources/lib/orchard.jar</systemPath>-->
+                        <systemPath>D:/code/platform/src/main/resources/lib/orchard.jar</systemPath>
                     </dependency>
                 </dependencies>
             </plugin>

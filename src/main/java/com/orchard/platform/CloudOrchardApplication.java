@@ -17,8 +17,8 @@ import springfox.documentation.swagger2.annotations.EnableSwagger2;
 @EnableSwagger2
 @SpringBootApplication
 @EnableAutoConfiguration(exclude={DataSourceAutoConfiguration.class})
-@ServletComponentScan
-@ComponentScan
+//@ServletComponentScan
+//@ComponentScan
 public class CloudOrchardApplication {
 
     public static void main(String[] args) {

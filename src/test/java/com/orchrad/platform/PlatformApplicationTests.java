@@ -2,7 +2,7 @@ package com.orchrad.platform;
 
 import com.orchard.platform.CloudOrchardApplication;
 import com.orchard.platform.dao.mapper.auth.UserInfoMapper;
-import com.orchard.platform.service.common.CommonService;
+import com.orchard.platform.service.account.AccountService;
 import org.junit.Assert;
 import org.junit.Test;
 import org.junit.runner.RunWith;
@@ -15,7 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
         webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class PlatformApplicationTests {
     @Autowired
-    CommonService commonService;
+    AccountService accountService;
     @Autowired
     UserInfoMapper userInfoMapper;
 
@@ -25,6 +25,6 @@ public class PlatformApplicationTests {
 
     @Test
     public void testFindUserInfoByUserId(){
-        Assert.assertEquals(commonService.findByUserId("orchard").getUserPassword(), "12345");
+        Assert.assertEquals(accountService.findByUserId("orchard").getUserPassword(), "12345");
     }
 }

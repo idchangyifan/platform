@@ -1,6 +1,4 @@
-package com.orchard.platform.service.common;/**
- * @author Orchard.Chang
- */
+package com.orchard.platform.service.account;
 
 import com.orchard.platform.dao.entity.auth.UserInfo;
 import com.orchard.platform.dto.UserInfoDto;
@@ -10,7 +8,7 @@ import com.orchard.platform.dto.UserInfoDto;
  *@Date 2018/10/1715:04
  *@Version 1.0
  **/
-public interface CommonService {
+public interface AccountService {
     /**
      * 注册
      *
@@ -22,11 +20,10 @@ public interface CommonService {
     /**
      * 登陆
      *
-     * @param userName
-     * @param password
+     * @param userInfoDto
      * @return
      */
-    boolean login(String userName, String password);
+    boolean login(UserInfoDto userInfoDto);
 
     /**
      * 校验输入不为空、不包含特殊字符、不包含空格
