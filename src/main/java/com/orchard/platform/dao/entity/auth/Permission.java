@@ -1,75 +1,49 @@
 package com.orchard.platform.dao.entity.auth;
 
-import com.orchard.Entity;
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
 
-public class Permission extends Entity {
+/**
+* Created by Mybatis Generator 2018/11/30
+*/
+@Data
+public class Permission implements Serializable {
+    /* 主键*/
+    private String id;
+
+    /* 权限名*/
     private String name;
 
+    /* 权限*/
     private String permission;
 
+    /* 资源id*/
     private String resourceId;
 
+    /* 域id*/
     private String scopeId;
 
+    /* 动作id*/
     private String actionId;
 
+    /* 资源实例*/
     private String resourceInstanceId;
 
+    /* 状态*/
     private String status;
 
-    public String getName() {
-        return name;
-    }
+    /* 创建时间*/
+    private Date createDate;
 
-    public void setName(String name) {
-        this.name = name == null ? null : name.trim();
-    }
+    /* 更新时间*/
+    private Date updateDate;
 
-    public String getPermission() {
-        return permission;
-    }
+    /* 创建者*/
+    private String createBy;
 
-    public void setPermission(String permission) {
-        this.permission = permission == null ? null : permission.trim();
-    }
+    /* 修改者*/
+    private String updateBy;
 
-    public String getResourceId() {
-        return resourceId;
-    }
-
-    public void setResourceId(String resourceId) {
-        this.resourceId = resourceId == null ? null : resourceId.trim();
-    }
-
-    public String getScopeId() {
-        return scopeId;
-    }
-
-    public void setScopeId(String scopeId) {
-        this.scopeId = scopeId == null ? null : scopeId.trim();
-    }
-
-    public String getActionId() {
-        return actionId;
-    }
-
-    public void setActionId(String actionId) {
-        this.actionId = actionId == null ? null : actionId.trim();
-    }
-
-    public String getResourceInstanceId() {
-        return resourceInstanceId;
-    }
-
-    public void setResourceInstanceId(String resourceInstanceId) {
-        this.resourceInstanceId = resourceInstanceId == null ? null : resourceInstanceId.trim();
-    }
-
-    public String getStatus() {
-        return status;
-    }
-
-    public void setStatus(String status) {
-        this.status = status == null ? null : status.trim();
-    }
+    private static final long serialVersionUID = 1L;
 }

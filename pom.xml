@@ -84,6 +84,10 @@
             <artifactId>commons-lang3</artifactId>
             <version>3.1</version>
         </dependency>
+        <dependency>
+            <groupId>org.projectlombok</groupId>
+            <artifactId>lombok</artifactId>
+        </dependency>
 
 
 
@@ -139,14 +143,6 @@
                         <groupId> mysql</groupId>
                         <artifactId>mysql-connector-java</artifactId>
                         <version>8.0.11</version>
-                    </dependency>
-                    <dependency>
-                        <groupId>orchard</groupId>
-                        <artifactId>orchard</artifactId>
-                        <version>v0.1</version>
-                        <scope>system</scope>
-                        <!--<systemPath>F:/code/platform/src/main/resources/lib/orchard.jar</systemPath>-->
-                        <systemPath>D:/code/platform/src/main/resources/lib/orchard.jar</systemPath>
                     </dependency>
                 </dependencies>
             </plugin>

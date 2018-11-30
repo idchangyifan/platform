@@ -1,77 +1,46 @@
 package com.orchard.platform.dao.entity.auth;
 
-import com.orchard.Entity;
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
 
-import java.util.List;
+/**
+* Created by Mybatis Generator 2018/11/30
+*/
+@Data
+public class UserInfo implements Serializable {
+    /* 主键*/
+    private String id;
 
-public class UserInfo extends Entity {
+    /* 真实姓名*/
     private String userName;
 
+    /* 账号*/
     private String userId;
 
+    /* 密码*/
     private String userPassword;
 
+    /* 盐*/
     private String salt;
 
+    /* 用户类型*/
     private Integer userType;
 
+    /* 手机号*/
     private String userPhone;
-    //todo:这里应该有一个用于保存role的list，要重写userinfo的增删改查，可以参照小飞
-    //private List<Roles> rolesList;
 
-    public String getUserName() {
-        return userName;
-    }
+    /* 创建时间*/
+    private Date createDate;
 
-    public void setUserName(String userName) {
-        this.userName = userName == null ? null : userName.trim();
-    }
+    /* 更新时间*/
+    private Date updateDate;
 
-    public String getUserId() {
-        return userId;
-    }
+    /* 创建者*/
+    private String createBy;
 
-    public void setUserId(String userId) {
-        this.userId = userId == null ? null : userId.trim();
-    }
+    /* 修改者*/
+    private String updateBy;
 
-    public String getUserPassword() {
-        return userPassword;
-    }
-
-    public void setUserPassword(String userPassword) {
-        this.userPassword = userPassword == null ? null : userPassword.trim();
-    }
-
-    public String getSalt() {
-        return salt;
-    }
-
-    public void setSalt(String salt) {
-        this.salt = salt == null ? null : salt.trim();
-    }
-
-    public Integer getUserType() {
-        return userType;
-    }
-
-    public void setUserType(Integer userType) {
-        this.userType = userType;
-    }
-
-    public String getUserPhone() {
-        return userPhone;
-    }
-
-    public void setUserPhone(String userPhone) {
-        this.userPhone = userPhone == null ? null : userPhone.trim();
-    }
-
-/*    public List<Roles> getRolesList() {
-        return rolesList;
-    }
-
-    public void setRolesList(List<Roles> rolesList) {
-        this.rolesList = rolesList;
-    }*/
+    private static final long serialVersionUID = 1L;
 }

@@ -1,35 +1,37 @@
 package com.orchard.platform.dao.entity.auth;
 
-import com.orchard.Entity;
+import java.io.Serializable;
+import java.util.Date;
+import lombok.Data;
 
-public class Roles extends Entity {
+/**
+* Created by Mybatis Generator 2018/11/30
+*/
+@Data
+public class Roles implements Serializable {
+    /* 主键*/
+    private String id;
+
+    /* 角色名称*/
     private String roleName;
 
+    /* 角色描述*/
     private String roleDescription;
 
+    /* 是否可用,如果不可用将不会添加给用户*/
     private String available;
 
-    public String getRoleName() {
-        return roleName;
-    }
+    /* 创建时间*/
+    private Date createDate;
 
-    public void setRoleName(String roleName) {
-        this.roleName = roleName == null ? null : roleName.trim();
-    }
+    /* 更新时间*/
+    private Date updateDate;
 
-    public String getRoleDescription() {
-        return roleDescription;
-    }
+    /* 创建者*/
+    private String createBy;
 
-    public void setRoleDescription(String roleDescription) {
-        this.roleDescription = roleDescription == null ? null : roleDescription.trim();
-    }
+    /* 修改者*/
+    private String updateBy;
 
-    public String getAvailable() {
-        return available;
-    }
-
-    public void setAvailable(String available) {
-        this.available = available == null ? null : available.trim();
-    }
+    private static final long serialVersionUID = 1L;
 }

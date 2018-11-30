@@ -3,8 +3,13 @@ package com.orchard.platform.dao.mapper.auth;
 import com.orchard.platform.dao.entity.auth.UserInfoRole;
 import com.orchard.platform.dao.entity.auth.UserInfoRoleExample;
 import java.util.List;
+import org.apache.ibatis.annotations.Mapper;
 import org.apache.ibatis.annotations.Param;
 
+/**
+* Created by Mybatis Generator 2018/11/30
+*/
+@Mapper
 public interface UserInfoRoleMapper {
     long countByExample(UserInfoRoleExample example);
 
